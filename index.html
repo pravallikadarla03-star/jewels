@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMIÈRE – Fine Jewelry Atelier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Cinzel:wght@400;600&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-burgundy: #4A1C23;
+            --soft-cream: #FAF7F2;
+            --charcoal: #2C2C2C;
+            --rose-gold: #B76E79;
+            --accent-emerald: #1B5E4F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--soft-cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--deep-burgundy);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 300;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #F5EEE6 50%, var(--soft-cream) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, 50px) rotate(180deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 6rem;
+            font-weight: 400;
+            letter-spacing: 8px;
+            color: var(--deep-burgundy);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--charcoal);
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s ease;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gold);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            color: var(--soft-cream);
+        }
+
+        /* Collections Section */
+        .collections {
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            letter-spacing: 4px;
+            color: var(--deep-burgundy);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .collection-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, #F5EEE6 0%, var(--soft-cream) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            cursor: pointer;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(74, 28, 35, 0.15);
+        }
+
+        .collection-image {
+            width: 100%;
+            height: 70%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+        }
+
+        .collection-card:hover .collection-image {
+            transform: scale(1.05);
+        }
+
+        .collection-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .collection-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--deep-burgundy);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .collection-desc {
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Featured Products */
+        .featured {
+            background: var(--deep-burgundy);
+            color: var(--soft-cream);
+            padding: 8rem 3rem;
+            position: relative;
+        }
+
+        .featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to bottom, rgba(250, 247, 242, 0.1), transparent);
+        }
+
+        .featured-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-top: 5rem;
+        }
+
+        .product-card {
+            text-align: center;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+
+        .product-card:nth-child(2) { animation-delay: 0.1s; }
+        .product-card:nth-child(3) { animation-delay: 0.2s; }
+        .product-card:nth-child(4) { animation-delay: 0.3s; }
+
+        .product-image-wrapper {
+            width: 100%;
+            aspect-ratio: 1;
+            background: rgba(250, 247, 242, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: background 0.4s ease, border-color 0.4s ease;
+        }
+
+        .product-card:hover .product-image-wrapper {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--primary-gold);
+        }
+
+        .product-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1.5px;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: var(--primary-gold);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+            color: var(--deep-burgundy);
+        }
+
+        .about-text p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(183, 110, 121, 0.1));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            padding: 8rem 3rem;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #F5EEE6 100%);
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 3rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(44, 44, 44, 0.2);
+            background: rgba(255, 255, 255, 0.8);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--charcoal);
+            transition: border-color 0.3s ease, background 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%232C2C2C' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 3rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: var(--primary-gold);
+        }
+
+        .checkbox-label {
+            font-size: 0.9rem;
+            text-transform: none;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+            font-weight: 300;
+            margin: 0;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.3rem;
+            background: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--charcoal);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s ease;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gold);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .submit-button:hover::before {
+            left: 0;
+        }
+
+        .submit-button:hover {
+            color: var(--soft-cream);
+        }
+
+        .submit-button:active {
+            transform: scale(0.98);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--charcoal);
+            margin-top: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--soft-cream);
+            padding: 4rem 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--primary-gold);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 0.9rem;
+            color: var(--soft-cream);
+            text-decoration: none;
+            font-weight: 300;
+            line-height: 2;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--primary-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-gold);
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 2rem;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+                letter-spacing: 4px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .collection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Decorative Elements */
+        .ornament {
+            width: 60px;
+            height: 2px;
+            background: var(--primary-gold);
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .ornament::before,
+        .ornament::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            top: -3px;
+        }
+
+        .ornament::before {
+            left: -15px;
+        }
+
+        .ornament::after {
+            right: -15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">LUMIÈRE</a>
+            <ul class="nav-links">
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#featured">Featured</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>LUMIÈRE</h1>
+            <p class="hero-subtitle">Timeless Elegance, Crafted by Hand</p>
+            <div class="ornament"></div>
+            <a href="#collections" class="cta-button">Discover Collection</a>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section class="collections" id="collections">
+        <h2 class="section-title">COLLECTIONS</h2>
+        <div class="ornament"></div>
+        
+        <div class="collection-grid">
+            <div class="collection-card">
+                <div class="collection-image" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(183, 110, 121, 0.2)); display: flex; align-items: center; justify-content: center; font-size: 6rem;">💍</div>
+                <div class="collection-info">
+                    <h3 class="collection-name">Eternal Bonds</h3>
+                    <p class="collection-desc">Engagement & Wedding Rings</p>
+                </div>
+            </div>
+
+            <div class="collection-card">
+                <div class="collection-image" style="background: linear-gradient(135deg, rgba(27, 94, 79, 0.2), rgba(212, 175, 55, 0.2)); display: flex; align-items: center; justify-content: center; font-size: 6rem;">📿</div>
+                <div class="collection-info">
+                    <h3 class="collection-name">Celestial</h3>
+                    <p class="collection-desc">Necklaces & Pendants</p>
+                </div>
+            </div>
+
+            <div class="collection-card">
+                <div class="collection-image" style="background: linear-gradient(135deg, rgba(183, 110, 121, 0.2), rgba(212, 175, 55, 0.2)); display: flex; align-items: center; justify-content: center; font-size: 6rem;">👂</div>
+                <div class="collection-info">
+                    <h3 class="collection-name">Whispers</h3>
+                    <p class="collection-desc">Earrings & Studs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured" id="featured">
+        <h2 class="section-title" style="color: var(--soft-cream);">FEATURED PIECES</h2>
+        <div class="ornament" style="background: var(--soft-cream);"></div>
+        
+        <div class="featured-grid">
+            <div class="product-card">
+                <div class="product-image-wrapper">💎</div>
+                <h3 class="product-name">Aurora Ring</h3>
+                <p class="product-price">$2,850</p>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">✨</div>
+                <h3 class="product-name">Solstice Pendant</h3>
+                <p class="product-price">$1,650</p>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">🌙</div>
+                <h3 class="product-name">Crescent Earrings</h3>
+                <p class="product-price">$980</p>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">⭐</div>
+                <h3 class="product-name">Constellation Bracelet</h3>
+                <p class="product-price">$1,420</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-text">
+            <h2>OUR STORY</h2>
+            <div class="ornament" style="margin-left: 0;"></div>
+            <p>For over three decades, Lumière has been crafting jewelry that transcends time. Each piece is meticulously handcrafted by master artisans who pour their passion and expertise into every design.</p>
+            <p>We believe that jewelry is more than adornment—it's a testament to life's most precious moments, a symbol of love that endures through generations.</p>
+            <p>From ethically sourced gemstones to sustainable practices, we are committed to creating beauty that honors both artistry and responsibility.</p>
+        </div>
+        <div class="about-image">
+            ✦
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="contact-intro">
+                <h2 class="section-title">GET IN TOUCH</h2>
+                <div class="ornament"></div>
+                <p class="contact-description">Whether you're seeking a bespoke piece or have questions about our collections, we'd love to hear from you. Our artisans are ready to bring your vision to life.</p>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="interest">I'm Interested In *</label>
+                    <select id="interest" name="interest" required>
+                        <option value="">Select an option</option>
+                        <option value="engagement">Engagement Rings</option>
+                        <option value="wedding">Wedding Bands</option>
+                        <option value="necklaces">Necklaces</option>
+                        <option value="earrings">Earrings</option>
+                        <option value="bracelets">Bracelets</option>
+                        <option value="custom">Custom Design</option>
+                        <option value="repair">Repair & Restoration</option>
+                        <option value="other">Other Inquiry</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter" class="checkbox-label">Subscribe to our newsletter for exclusive offers and new collection announcements</label>
+                </div>
+
+                <button type="submit" class="submit-button">Send Message</button>
+
+                <p class="form-note">* Required fields</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CONTACT</h3>
+                <p>123 Fifth Avenue<br>New York, NY 10001</p>
+                <p>contact@lumiere.com<br>+1 (555) 123-4567</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>CUSTOMER CARE</h3>
+                <p><a href="#">Shipping & Returns</a></p>
+                <p><a href="#">Size Guide</a></p>
+                <p><a href="#">Care Instructions</a></p>
+                <p><a href="#">FAQ</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>FOLLOW US</h3>
+                <div class="social-links">
+                    <a href="#">fb</a>
+                    <a href="#">ig</a>
+                    <a href="#">tw</a>
+                    <a href="#">pi</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2026 LUMIÈRE. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                interest: document.getElementById('interest').value,
+                message: document.getElementById('message').value,
+                newsletter: document.getElementById('newsletter').checked
+            };
+            
+            // Simple validation
+            if (!formData.firstName || !formData.lastName || !formData.email || !formData.interest || !formData.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(formData.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Show success message
+            alert('Thank you for your message! We will contact you within 24 hours.');
+            
+            // Reset form
+            this.reset();
+            
+            // In a real application, you would send this data to a server
+            console.log('Form submitted:', formData);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
